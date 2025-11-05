@@ -1,5 +1,6 @@
 \documentclass[pdflatex,ja=standard,a4paper]{bxjsarticle}
 \usepackage{color}
+\usepackage{amsmath}
 \newcommand{\dif}{\mathrm{d}}
 %opening
 \title{正誤表}
@@ -15,56 +16,40 @@
 \begin{description}
 \item[誤：] 
 \begin{eqnarray*}
-\left{\max\left\{\frac{1200+800}{2}-750,0\right\}\\
-	\max\left\{\frac{1000+500}{2}-750,0\right\}\\
-	\max\left\{\frac{1200+800}{2}-750,0\right\}
-\right)
-=\left(
+\begin{pmatrix}
+\max\left\{\frac{1200+800}{2}-750,0\right\}\\
+\max\left\{\frac{1000+500}{2}-750,0\right\}\\
+\max\left\{\frac{\textcolor{red}{1200}+\textcolor{red}{800}}{2}-750,0\right\}
+\end{pmatrix}
+=\begin{pmatrix}
 250 \\ 0 \\ 0
-\right)
+\end{pmatrix}
 \end{eqnarray*}
 \item[正：] 
 \begin{eqnarray*}
-			\lim_{n\to\infty}(\sqrt{n+2}-\sqrt{n})
-			&=& \lim_{n\to\infty}
-			\frac{(\sqrt{n+2}-\sqrt{n})(\sqrt{n+2}+\sqrt{n})}{\sqrt{n+2}+\sqrt{n}}\\
-		&=& \lim_{n\to\infty}
-		\frac{2}{(\sqrt{n+\textcolor{red}{2}}+\sqrt{n})}=0.
+	\begin{pmatrix}
+		\max\left\{\frac{1200+800}{2}-750,0\right\}\\
+		\max\left\{\frac{1000+500}{2}-750,0\right\}\\
+		\max\left\{\frac{\textcolor{red}{800}+\textcolor{red}{300}}{2}-750,0\right\}
+	\end{pmatrix}
+	=\begin{pmatrix}
+		250 \\ 0 \\ 0
+	\end{pmatrix}
 \end{eqnarray*}
 \end{description}
-\item[p.114 l.9]\quad 
+\item[p.69 演習3.1解答例]\quad 
 \begin{description}
-\item[誤：] 
-ここで，$x\to a+$とすると，${\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}\textcolor{red}{f}(x)=\infty}$であること
-\item[正：] 
-ここで，$x\to a+$とすると，${\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}\textcolor{red}{g}(x)=\infty}$であること
+\item[誤：]\quad \\
+\verb|from sympy import *|\\
+\verb|Ab=Matrix([[0, 0, 2, 1],|\\
+\verb|          [-2, 1, 1, -1],|\\
+\verb|          [1, 0, 5, 2]|\textcolor{red}{,}\\
+ \qquad\qquad\ \ \tt{ \textcolor{red}{ [0, 0, 4, 2]}]);}
+\item[正：] \quad\\
+\verb|from sympy import *|\\
+\verb|Ab=Matrix([[0, 0, 2, 1],|\\
+\verb|          [-2, 1, 1, -1],|\\
+\verb|          [1, 0, 5, 2]]);|
 \end{description}
-\item[p.143 l.10]
-\item[誤：] 
-$$F=f(x_1+h_1,x_2+h_2)-f(x_1+h_1,x_2)-f(x_1,x_2+h_2)\textcolor{red}{-}f(x_1,x_2)$$
-\item[正：] 
-$$F=f(x_1+h_1,x_2+h_2)-f(x_1+h_1,x_2)-f(x_1,x_2+h_2)\textcolor{red}{+}f(x_1,x_2)$$
-
-\item[p.148 l.4]
-\item[誤：] 
-$$dy=\frac{\partial f}{\partial x_1}\dif x_1+\frac{\partial f}{\partial x_2}\dif x_2=
-\frac{x_2^2}{(x_{\textcolor{red}{2}}^{\textcolor{red}{2}}+x_2)^2}\dif x_1+
-\frac{x_1^2}{(x_1^{\textcolor{red}{2}}+x_2)^2}\dif x_2.$$
-\item[正：] 
-$$dy=\frac{\partial f}{\partial x_1}\dif x_1+\frac{\partial f}{\partial x_2}\dif x_2
-2=
-\frac{x_2^2}{(x_{\textcolor{red}{1}}+x_2)^2}\dif x_1+
-\frac{x_1^2}{(x_1+x_2)^2}\dif x_2.$$
-\item[p.149 l.8]
-\item[誤：] 
-$$\lim_{\Delta t\to0}
-\left\{
-\frac{\phi(t+\Delta t),\psi(t+\Delta t)-f(\phi(t),\psi(t))}{\Delta t}-f_{x_1}\frac{\Delta x_1}{\Delta t}-f_{x_2}\frac{\Delta x_2}{\Delta t}
-\right\}=0$$
-\item[正：] 
-$$\lim_{\Delta t\to0}
-\left\{
-\frac{\textcolor{red}{f(}\phi(t+\Delta t),\psi(t+\Delta t)-f(\phi(t),\psi(t))}{\Delta t}-f_{x_1}\frac{\Delta x_1}{\Delta t}-f_{x_2}\frac{\Delta x_2}{\Delta t}
-\right\}=0$$
 \end{enumerate}
 \end{document}
