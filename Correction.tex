@@ -1,5 +1,7 @@
 \documentclass[pdflatex,ja=standard,a4paper]{bxjsarticle}
 \usepackage{color}
+\usepackage{amsmath}
+\usepackage{bm}
 \newcommand{\dif}{\mathrm{d}}
 %opening
 \title{正誤表}
@@ -10,61 +12,105 @@
 \maketitle
 
 
-\begin{enumerate}
+\begin{description} 
 \item[p.35 練習問題２]\quad 
 \begin{description}
 \item[誤：] 
 \begin{eqnarray*}
-\left{\max\left\{\frac{1200+800}{2}-750,0\right\}\\
-	\max\left\{\frac{1000+500}{2}-750,0\right\}\\
-	\max\left\{\frac{1200+800}{2}-750,0\right\}
-\right)
-=\left(
+\begin{pmatrix}
+\max\left\{\frac{1200+800}{2}-750,0\right\}\\
+\max\left\{\frac{1000+500}{2}-750,0\right\}\\
+\max\left\{\frac{\textcolor{red}{1200}+\textcolor{red}{800}}{2}-750,0\right\}
+\end{pmatrix}
+=\begin{pmatrix}
 250 \\ 0 \\ 0
-\right)
+\end{pmatrix}
 \end{eqnarray*}
 \item[正：] 
 \begin{eqnarray*}
-			\lim_{n\to\infty}(\sqrt{n+2}-\sqrt{n})
-			&=& \lim_{n\to\infty}
-			\frac{(\sqrt{n+2}-\sqrt{n})(\sqrt{n+2}+\sqrt{n})}{\sqrt{n+2}+\sqrt{n}}\\
-		&=& \lim_{n\to\infty}
-		\frac{2}{(\sqrt{n+\textcolor{red}{2}}+\sqrt{n})}=0.
+	\begin{pmatrix}
+		\max\left\{\frac{1200+800}{2}-750,0\right\}\\
+		\max\left\{\frac{1000+500}{2}-750,0\right\}\\
+		\max\left\{\frac{\textcolor{red}{800}+\textcolor{red}{300}}{2}-750,0\right\}
+	\end{pmatrix}
+	=\begin{pmatrix}
+		250 \\ 0 \\ 0
+	\end{pmatrix}
 \end{eqnarray*}
 \end{description}
-\item[p.114 l.9]\quad 
-\begin{description}
-\item[誤：] 
-ここで，$x\to a+$とすると，${\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}\textcolor{red}{f}(x)=\infty}$であること
-\item[正：] 
-ここで，$x\to a+$とすると，${\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}\textcolor{red}{g}(x)=\infty}$であること
-\end{description}
-\item[p.143 l.10]
-\item[誤：] 
-$$F=f(x_1+h_1,x_2+h_2)-f(x_1+h_1,x_2)-f(x_1,x_2+h_2)\textcolor{red}{-}f(x_1,x_2)$$
-\item[正：] 
-$$F=f(x_1+h_1,x_2+h_2)-f(x_1+h_1,x_2)-f(x_1,x_2+h_2)\textcolor{red}{+}f(x_1,x_2)$$
 
-\item[p.148 l.4]
-\item[誤：] 
-$$dy=\frac{\partial f}{\partial x_1}\dif x_1+\frac{\partial f}{\partial x_2}\dif x_2=
-\frac{x_2^2}{(x_{\textcolor{red}{2}}^{\textcolor{red}{2}}+x_2)^2}\dif x_1+
-\frac{x_1^2}{(x_1^{\textcolor{red}{2}}+x_2)^2}\dif x_2.$$
+\item[p.69 演習3.1解答例]\quad 
+\begin{description}
+\item[誤：]\quad \\
+\verb|from sympy import *|\\
+\verb|Ab=Matrix([[0, 0, 2, 1],|\\
+\verb|          [-2, 1, 1, -1],|\\
+\verb|          [1, 0, 5, 2]|\textcolor{red}{,}\\
+ \qquad\qquad\ \ \tt{ \textcolor{red}{ [0, 0, 4, 2]}]);}
+\item[正：] \quad\\
+\verb|from sympy import *|\\
+\verb|Ab=Matrix([[0, 0, 2, 1],|\\
+\verb|          [-2, 1, 1, -1],|\\
+\verb|          [1, 0, 5, 2]]);|
+\end{description}
+
+\item[p.137] 　
+\begin{description} 
+\item[誤：]
+定理5.4
+\item[正：]
+\textcolor{red}{定義}5.\textcolor{red}{6}
+\end{description}
+\item[p.143] 　
+\begin{description} 
+\item[誤：]
+定理5.5
+\item[正：]
+定理5.\textcolor{red}{4}
+\item[誤：]
+定理5.6
+\item[正：]
+定理5.\textcolor{red}{5}
+\end{description}
+\clearpage
+	\item[p.166. l.9--l.15]\quad
+\begin{description} 
+    \item[誤：] 
+	\begin{eqnarray*}
+		\Delta_1 q_1(\bm{x})
+		&=& a_{11} q(\bm{x})\\
+		&=& a_{11}(a_{11}x_1^2+2a_{12}x_1x_2+a_{22}x^2)\\
+        &=&
+a_{11}^2x_1^2+2a_{11}a_{12}x_1x_2+a_{11}a_{22}x^2\\
+&=&
+a_{11}^2x_1^2+2a_{11}a_{12}x_1x_2+a_{12}^2x_2-a_{12}^2x_2+a_{11}a_{22}x^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+(a_{11}a_{22}-a_{12}^2)x_2^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+
+\begin{vmatrix}
+a_{11} & a_{12}\\
+a_{12} & a_{22}
+\end{vmatrix}x_2^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+
+\Delta_2x^2
+\end{eqnarray*}
 \item[正：] 
-$$dy=\frac{\partial f}{\partial x_1}\dif x_1+\frac{\partial f}{\partial x_2}\dif x_2
-2=
-\frac{x_2^2}{(x_{\textcolor{red}{1}}+x_2)^2}\dif x_1+
-\frac{x_1^2}{(x_1+x_2)^2}\dif x_2.$$
-\item[p.149 l.8]
-\item[誤：] 
-$$\lim_{\Delta t\to0}
-\left\{
-\frac{\phi(t+\Delta t),\psi(t+\Delta t)-f(\phi(t),\psi(t))}{\Delta t}-f_{x_1}\frac{\Delta x_1}{\Delta t}-f_{x_2}\frac{\Delta x_2}{\Delta t}
-\right\}=0$$
-\item[正：] 
-$$\lim_{\Delta t\to0}
-\left\{
-\frac{\textcolor{red}{f(}\phi(t+\Delta t),\psi(t+\Delta t)-f(\phi(t),\psi(t))}{\Delta t}-f_{x_1}\frac{\Delta x_1}{\Delta t}-f_{x_2}\frac{\Delta x_2}{\Delta t}
-\right\}=0$$
-\end{enumerate}
+	\begin{eqnarray*}
+		\Delta_1 q_1(\bm{x})
+		&=& a_{11} q(\bm{x})\\
+		&=& a_{11}(a_{11}x_1^2+2a_{12}x_1x_2+a_{22}x^2)\\
+        &=&
+a_{11}^2x_1^2+2a_{11}a_{12}x_1x_2+a_{11}a_{22}x^2\\
+&=&
+a_{11}^2x_1^2+2a_{11}a_{12}x_1x_2+a_{12}^2x_2^{\textcolor{red}{2}}-a_{12}^2x_2^{\textcolor{red}{2}}+a_{11}a_{22}x^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+(a_{11}a_{22}-a_{12}^2)x_2^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+
+\begin{vmatrix}
+a_{11} & a_{12}\\
+a_{12} & a_{22}
+\end{vmatrix}x_2^2\\
+&=&(a_{11}x_1+a_{12}x_2)^2+
+\Delta_2x^2_{\textcolor{red}{2}}
+\end{eqnarray*}
+\end{description}
+\end{description}
 \end{document}
